@@ -8,9 +8,6 @@ const userClickedPattern = [];
 
 
 
-
-
-
 $(".btn").click(function() {
   const userChosenColour = $(this).attr("id");
 });
@@ -18,9 +15,6 @@ $(".btn").click(function() {
 userClickedPattern.push(userChosenColour);
 
 console.log(userClickedPattern);
-
-
-
 
 
 
