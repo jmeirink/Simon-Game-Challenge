@@ -6,17 +6,10 @@ const gamePattern = [];
 const userClickedPattern = [];
 
 
-
-
 $(".btn").click(function() {
   const userChosenColour = $(this).attr("id");
+  userClickedPattern.push(userChosenColour);
 });
-
-userClickedPattern.push(userChosenColour);
-
-console.log(userClickedPattern);
-
-
 
 
 function nextSequence() {
