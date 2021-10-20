@@ -9,22 +9,26 @@ const userClickedPattern = [];
 $(".btn").click(function() {
   const userChosenColour = $(this).attr("id");
   userClickedPattern.push(userChosenColour);
+
+  playSound(userChosenColour);
 });
 
 
 function nextSequence() {
   const randomNumber = Math.floor(Math.random() * 4);
+  const randomChosenColour = buttonColours[randomNumber];
+  gamePattern.push(randomChosenColour);
 
-  return randomNumber;
+  $("#" + randomChosenColour).fadeOut(100).fadeIn(100)
+
+  playSound(randomChosenColour);
 };
 
-const randomChosenColour = buttonColours[nextSequence()];
 
-gamePattern.push(randomChosenColour);
+function playSound(name) {
+  const audio = new Audio("sounds/" + name + ".mp3");
+  audio.play();
+}
 
-$("#" + randomChosenColour).fadeOut(100).fadeIn(100)
-
-///////////// Not working in chrome, but does work in Safari
-const audio = new Audio('sounds/' + randomChosenColour + '.mp3');
-audio.play();
-/////////////
+// const audio = new Audio('sounds/' + randomChosenColour + '.mp3');
+// audio.play();
