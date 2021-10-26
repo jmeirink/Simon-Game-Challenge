@@ -16,6 +16,11 @@ $(".btn").click(function() {
   animatePress(userChosenColour);
 });
 
+// Continue
+function checkAnswer(currentLevel) {
+  let lastChosenAnswer = userClickedPattern.length - 1;
+};
+
 
 function nextSequence() {
   const randomNumber = Math.floor(Math.random() * 4);
