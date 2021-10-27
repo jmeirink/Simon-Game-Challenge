@@ -14,12 +14,21 @@ $(".btn").click(function() {
 
   playSound(userChosenColour);
   animatePress(userChosenColour);
+
+  checkAnswer(userClickedPattern.length - 1);
 });
 
-// Continue
+
 function checkAnswer(currentLevel) {
-  let lastChosenAnswer = userClickedPattern.length - 1;
+  if (userClickedPattern === gamePattern) {
+    console.log("success");
+  }
+  else {
+    console.log("wrong");
+  };
 };
+
+
 
 
 function nextSequence() {
