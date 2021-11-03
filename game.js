@@ -1,7 +1,7 @@
 
 const buttonColours = ['red', 'blue', 'green', 'yellow'];
 
-const gamePattern = [];
+let gamePattern = [];
 
 let userClickedPattern = [];
 
@@ -45,6 +45,18 @@ function checkAnswer(currentLevel) {
   }
   else {
     console.log("wrong");
+
+    const audio = new Audio("sounds/wrong.mp3");
+    audio.play();
+
+    $('#level-title').text("Game Over, Press Any Key to Restart");
+
+    $(document.body).addClass('game-over').delay(200).queue(function(next){
+        $(this).removeClass('game-over');
+        next();
+
+//    startOver();
+    });
   };
 };
 
@@ -64,6 +76,13 @@ function nextSequence() {
   userClickedPattern.length = 0;
 };
 
+// Continue from here (Also line 58)
+function startOver() {
+  level.length = 0;
+  gamePattern.length = 0;
+  let started = false;
+};
+//
 
 function playSound(name) {
   const audio = new Audio("sounds/" + name + ".mp3");
