@@ -33,6 +33,13 @@ $('.btn').click(function() {
 });
 
 
+function startOver() {
+  level = 0;
+  gamePattern.length = 0;
+  started = false;
+};
+
+
 function checkAnswer(currentLevel) {
   if (userClickedPattern[currentLevel] === gamePattern[currentLevel]) {
     console.log("success");
@@ -49,14 +56,14 @@ function checkAnswer(currentLevel) {
     const audio = new Audio("sounds/wrong.mp3");
     audio.play();
 
-    $('#level-title').text("Game Over, Press Any Key to Restart");
-
     $(document.body).addClass('game-over').delay(200).queue(function(next){
         $(this).removeClass('game-over');
         next();
-
-//    startOver();
     });
+
+    $('#level-title').text("Game Over, Press Any Key to Restart");
+
+    startOver();
   };
 };
 
@@ -76,13 +83,6 @@ function nextSequence() {
   userClickedPattern.length = 0;
 };
 
-// Continue from here (Also line 58)
-function startOver() {
-  level.length = 0;
-  gamePattern.length = 0;
-  let started = false;
-};
-//
 
 function playSound(name) {
   const audio = new Audio("sounds/" + name + ".mp3");
